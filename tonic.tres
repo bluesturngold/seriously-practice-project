@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://283rqta8uc4o"]
+
+[ext_resource type="Script" uid="uid://c1o7623lhv7i0" path="res://item.gd" id="1_cswcg"]
+
+[resource]
+script = ExtResource("1_cswcg")
+item_name = "Tonic"
+description = "Restores 10 MP."
+mp_restore_amount = 10
+price = 15
+metadata/_custom_type_script = "uid://c1o7623lhv7i0"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://bb2ytyfpu0a66"]
+
+[ext_resource type="Script" uid="uid://b328ihkiprowb" path="res://ability.gd" id="1_jftgi"]
+[ext_resource type="Resource" uid="uid://c1wc6scah6bfu" path="res://status effects/armor_break.tres" id="1_lpbwp"]
+
+[resource]
+script = ExtResource("1_jftgi")
+ability_name = "Shatter Rain"
+target_type = 1
+inflicts_status = ExtResource("1_lpbwp")
+metadata/_custom_type_script = "uid://b328ihkiprowb"

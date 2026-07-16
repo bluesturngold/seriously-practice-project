@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ckaqq0jk0kvx8"]
+
+[ext_resource type="Script" uid="uid://mq7bvwc4iqyj" path="res://battler.gd" id="1_4l1t8"]
+[ext_resource type="Resource" uid="uid://co3trxhad74p5" path="res://slime.tres" id="2_ppcr1"]
+[ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_jayke"]
+[ext_resource type="PackedScene" uid="uid://cacc0jv6vygkk" path="res://health_bar.tscn" id="3_ppcr1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2002g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jayke")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Slime" type="Node2D" unique_id=546447892 groups=["enemies", "enemy"]]
+script = ExtResource("1_4l1t8")
+stats = ExtResource("2_ppcr1")
+
+[node name="HealthBarUI" parent="." unique_id=394278245 instance=ExtResource("3_ppcr1")]
+offset_left = -194.0
+offset_top = -133.0
+offset_right = -154.0
+offset_bottom = -93.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225739943]
+sprite_frames = SubResource("SpriteFrames_2002g")

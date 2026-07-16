@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ch5j4m06de7dw"]
+
+[ext_resource type="Script" uid="uid://wfban154frpi" path="res://map_transition.gd" id="1_t1oyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1oyb"]
+
+[node name="MapTransition" type="Area2D" unique_id=1137061215]
+script = ExtResource("1_t1oyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=60748814]
+shape = SubResource("RectangleShape2D_t1oyb")

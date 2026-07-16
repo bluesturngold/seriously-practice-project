@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dums4boloq12a"]
+
+[ext_resource type="Script" uid="uid://btawmrcctl8b6" path="res://boss_zone.gd" id="1_nichv"]
+[ext_resource type="PackedScene" uid="uid://w3br06eynv54" path="res://boss_slime.tscn" id="2_feufh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feufh"]
+
+[node name="BossZone" type="Area2D" unique_id=597308560]
+script = ExtResource("1_nichv")
+boss_scene = ExtResource("2_feufh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=527929658]
+shape = SubResource("RectangleShape2D_feufh")

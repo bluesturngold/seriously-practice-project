@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ujdqnqndxx0y"]
+
+[ext_resource type="Script" uid="uid://mq7bvwc4iqyj" path="res://battler.gd" id="1_7n4q5"]
+[ext_resource type="Resource" uid="uid://db3ya7bxlwo68" path="res://party_two.tres" id="2_7n4q5"]
+[ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_mlrhs"]
+[ext_resource type="PackedScene" uid="uid://cacc0jv6vygkk" path="res://health_bar.tscn" id="4_t2igv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1f3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mlrhs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hero2" type="Node2D" unique_id=1781126513 groups=["party"]]
+script = ExtResource("1_7n4q5")
+stats = ExtResource("2_7n4q5")
+persist_across_scenes = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1426145368]
+sprite_frames = SubResource("SpriteFrames_r1f3e")
+
+[node name="HealthBarUI" parent="." unique_id=394278245 instance=ExtResource("4_t2igv")]
+offset_left = -194.0
+offset_top = -134.0
+offset_right = -154.0
+offset_bottom = -94.0
+
+[node name="MPLabel" type="Label" parent="." unique_id=991124446]
+offset_left = 78.0
+offset_top = -94.0
+offset_right = 118.0
+offset_bottom = -67.0

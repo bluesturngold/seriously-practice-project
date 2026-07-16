@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://jur6nr7rj07v"]
+
+[ext_resource type="Script" uid="uid://c1o7623lhv7i0" path="res://item.gd" id="1_ywomn"]
+[ext_resource type="Script" uid="uid://bc40qs0mjp5eh" path="res://quest.gd" id="2_5svu2"]
+[ext_resource type="Resource" uid="uid://cvfuawlgxgcyd" path="res://potion.tres" id="2_hc0p0"]
+
+[resource]
+script = ExtResource("2_5svu2")
+quest_id = "test_quest"
+enemy_name = "Slime"
+required_count = 3
+offer_lines = Array[String](["Something's been eating my crops.", "I heard you help people. Can you figure it out?"])
+reminder_lines = Array[String](["Is my garden safe yet?"])
+completion_lines = Array[String](["I haven't had trouble with my plants lately. Thank you, slayer!"])
+reward_currency = 20
+reward_items = Array[ExtResource("1_ywomn")]([ExtResource("2_hc0p0")])
+reward_item_quantities = Array[int]([0])
+metadata/_custom_type_script = "uid://bc40qs0mjp5eh"

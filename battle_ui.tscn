@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://hrohi3tq2urq"]
+
+[ext_resource type="Script" uid="uid://bf1pf8lq81fu1" path="res://battle_ui.gd" id="1_qyamm"]
+[ext_resource type="Theme" uid="uid://bb6ijcfqsrw7t" path="res://main_theme.tres" id="2_kf0y4"]
+
+[node name="BattleUI" type="Control" unique_id=108858595]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qyamm")
+
+[node name="ActionMenu" type="VBoxContainer" parent="." unique_id=1615831607]
+layout_mode = 0
+offset_left = 1122.0
+offset_top = 798.0
+offset_right = 1238.0
+offset_bottom = 914.0
+
+[node name="AttackButton" type="Button" parent="ActionMenu" unique_id=785181033]
+layout_mode = 2
+text = "Attack"
+
+[node name="ItemButton" type="Button" parent="ActionMenu" unique_id=1631591497]
+layout_mode = 2
+text = "Item"
+
+[node name="RunButton" type="Button" parent="ActionMenu" unique_id=958208530]
+layout_mode = 2
+text = "Run"
+
+[node name="TargetMenu" type="VBoxContainer" parent="." unique_id=1299321706]
+layout_mode = 0
+offset_left = 1122.0
+offset_top = 797.0
+offset_right = 1238.0
+offset_bottom = 1013.0
+
+[node name="BattleLog" type="RichTextLabel" parent="." unique_id=1216799364]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67200005
+anchor_top = 0.708
+anchor_right = 0.897
+anchor_bottom = 0.883
+offset_left = -23.240112
+offset_top = 0.35998535
+offset_right = -40.23999
+offset_bottom = -0.0960083
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_kf0y4")
+scroll_following = true
+
+[node name="ItemMenu" type="VBoxContainer" parent="." unique_id=38995307]
+layout_mode = 0
+offset_left = 1123.0
+offset_top = 797.0
+offset_right = 1238.0
+offset_bottom = 953.0
+
+[node name="BackButton" type="Button" parent="." unique_id=1469523293]
+layout_mode = 0
+offset_left = 1122.0
+offset_top = 756.0
+offset_right = 1206.0
+offset_bottom = 792.0
+text = "Back"
+
+[node name="AttackMenu" type="VBoxContainer" parent="." unique_id=1663616807]
+layout_mode = 0
+offset_left = 1122.0
+offset_top = 797.0
+offset_right = 1238.0
+offset_bottom = 953.0
+
+[node name="TurnLabel" type="Label" parent="." unique_id=706618996]
+layout_mode = 0
+offset_left = 1259.0
+offset_top = 722.0
+offset_right = 1347.0
+offset_bottom = 759.0
+theme = ExtResource("2_kf0y4")
+vertical_alignment = 1

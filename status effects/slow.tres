@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://3ju3l10lfmcy"]
+
+[ext_resource type="Script" uid="uid://bxj0tmw55hc8" path="res://status_effect.gd" id="1_crjr0"]
+
+[resource]
+script = ExtResource("1_crjr0")
+effect_name = "Slow"
+effect_type = 1
+duration = 1
+damage_per_turn = 0
+metadata/_custom_type_script = "uid://bxj0tmw55hc8"

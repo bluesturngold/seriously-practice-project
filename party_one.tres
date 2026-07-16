@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://byo5jscffwijv"]
+
+[ext_resource type="Script" uid="uid://coyu443478sd4" path="res://character_stats.gd" id="1_1vk3l"]
+[ext_resource type="Script" uid="uid://b328ihkiprowb" path="res://ability.gd" id="1_j6r2l"]
+[ext_resource type="Resource" uid="uid://bb2ytyfpu0a66" path="res://sword_rain.tres" id="2_oamek"]
+[ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_uagxg"]
+
+[resource]
+script = ExtResource("1_1vk3l")
+character_name = "Hero"
+portrait = ExtResource("3_uagxg")
+abilities = Array[ExtResource("1_j6r2l")]([ExtResource("2_oamek")])
+max_mp_growth = 3
+metadata/_custom_type_script = "uid://coyu443478sd4"

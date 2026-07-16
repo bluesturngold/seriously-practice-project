@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cfil8hsqbdlld"]
+
+[ext_resource type="PackedScene" uid="uid://bcosd0477pvc5" path="res://party_one.tscn" id="1_i431l"]
+[ext_resource type="Script" uid="uid://b2xodwowsvjmx" path="res://battle_controller.gd" id="1_ip7xm"]
+[ext_resource type="PackedScene" uid="uid://ujdqnqndxx0y" path="res://party_two.tscn" id="2_0npn6"]
+[ext_resource type="Script" uid="uid://d1hb2bpcv6p5g" path="res://enemies.gd" id="2_dw4jg"]
+[ext_resource type="PackedScene" uid="uid://hrohi3tq2urq" path="res://battle_ui.tscn" id="3_i431l"]
+[ext_resource type="PackedScene" uid="uid://frcd7uih5g0p" path="res://party_three.tscn" id="3_mhv3b"]
+[ext_resource type="PackedScene" uid="uid://dmb28t2gdeue1" path="res://party_four.tscn" id="4_lcjiy"]
+
+[node name="Node2D" type="Node2D" unique_id=252782997]
+
+[node name="PartyPositions" type="Node2D" parent="." unique_id=1004841635]
+
+[node name="Hero" type="Marker2D" parent="PartyPositions" unique_id=1503598816]
+position = Vector2(1755, 165)
+
+[node name="Hero2" type="Marker2D" parent="PartyPositions" unique_id=761042045]
+position = Vector2(1757, 436)
+
+[node name="Hero3" type="Marker2D" parent="PartyPositions" unique_id=1892445338]
+position = Vector2(1760, 683)
+
+[node name="Hero4" type="Marker2D" parent="PartyPositions" unique_id=1556438400]
+position = Vector2(1760, 923)
+
+[node name="EnemyPositions" type="Node2D" parent="." unique_id=1762431791]
+position = Vector2(0, 18)
+
+[node name="EnemyOne" type="Marker2D" parent="EnemyPositions" unique_id=604544836]
+position = Vector2(846, 159)
+
+[node name="EnemyTwo" type="Marker2D" parent="EnemyPositions" unique_id=655866741]
+position = Vector2(845, 505)
+
+[node name="EnemyThree" type="Marker2D" parent="EnemyPositions" unique_id=1311421698]
+position = Vector2(869, 885)
+
+[node name="EnemyFour" type="Marker2D" parent="EnemyPositions" unique_id=1966328576]
+position = Vector2(207, 169)
+
+[node name="EnemyFive" type="Marker2D" parent="EnemyPositions" unique_id=1598129439]
+position = Vector2(224, 514)
+
+[node name="EnemySix" type="Marker2D" parent="EnemyPositions" unique_id=200168553]
+position = Vector2(217, 889)
+
+[node name="BossPosition" type="Marker2D" parent="EnemyPositions" unique_id=1957006250]
+position = Vector2(552, 522)
+
+[node name="Party" type="Node2D" parent="." unique_id=992037471]
+position = Vector2(738, -187)
+
+[node name="Hero" parent="Party" unique_id=1781126513 instance=ExtResource("1_i431l")]
+
+[node name="Hero2" parent="Party" unique_id=1196601351 instance=ExtResource("2_0npn6")]
+
+[node name="Hero3" parent="Party" unique_id=1508064963 instance=ExtResource("3_mhv3b")]
+
+[node name="Hero4" parent="Party" unique_id=1360860302 instance=ExtResource("4_lcjiy")]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=2083751148]
+position = Vector2(2, 20)
+script = ExtResource("2_dw4jg")
+
+[node name="BattleController" type="Node" parent="." unique_id=993528173]
+script = ExtResource("1_ip7xm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1974073734]
+
+[node name="BattleUI" parent="CanvasLayer" unique_id=108858595 instance=ExtResource("3_i431l")]

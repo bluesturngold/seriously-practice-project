@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://c1wc6scah6bfu"]
+
+[ext_resource type="Script" uid="uid://bxj0tmw55hc8" path="res://status_effect.gd" id="1_tgu0s"]
+
+[resource]
+script = ExtResource("1_tgu0s")
+effect_name = "Shatter"
+effect_type = 3
+damage_per_turn = 0
+metadata/_custom_type_script = "uid://bxj0tmw55hc8"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://db3ya7bxlwo68"]
+
+[ext_resource type="Script" uid="uid://b328ihkiprowb" path="res://ability.gd" id="1_0ujgc"]
+[ext_resource type="Script" uid="uid://coyu443478sd4" path="res://character_stats.gd" id="1_w42me"]
+
+[resource]
+script = ExtResource("1_w42me")
+character_name = "Hero2"
+metadata/_custom_type_script = "uid://coyu443478sd4"

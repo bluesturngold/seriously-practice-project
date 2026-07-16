@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://gy0h6kdw3oq1"]
+
+[ext_resource type="Script" uid="uid://b328ihkiprowb" path="res://ability.gd" id="1_ofs4d"]
+[ext_resource type="Script" uid="uid://coyu443478sd4" path="res://character_stats.gd" id="2_idbjh"]
+
+[resource]
+script = ExtResource("2_idbjh")
+character_name = "Slimeboss"
+max_health = 100
+level = 0
+experience_to_next_level = 0
+attack_growth = 0
+defense_growth = 0
+max_health_growth = 0
+max_mp_growth = 0
+currency_reward = 75
+experience_reward = 100
+metadata/_custom_type_script = "uid://coyu443478sd4"
