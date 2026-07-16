@@ -47,6 +47,7 @@ func place_player_at_spawn(scene_root: Node) -> void:
 	for marker in scene_root.get_tree().get_nodes_in_group("spawn_points"):
 		if marker.spawn_id == pending_spawn_point:
 			player.global_position = marker.global_position
+			pending_spawn_point = ""
 			return
 
 	push_warning("No spawn point found matching: " + pending_spawn_point)
