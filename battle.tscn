@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cfil8hsqbdlld"]
 
-[ext_resource type="PackedScene" uid="uid://bcosd0477pvc5" path="res://party_one.tscn" id="1_i431l"]
+[ext_resource type="PackedScene" uid="uid://bcosd0477pvc5" path="res://party/party_one.tscn" id="1_i431l"]
 [ext_resource type="Script" uid="uid://b2xodwowsvjmx" path="res://battle_controller.gd" id="1_ip7xm"]
-[ext_resource type="PackedScene" uid="uid://ujdqnqndxx0y" path="res://party_two.tscn" id="2_0npn6"]
+[ext_resource type="PackedScene" uid="uid://ujdqnqndxx0y" path="res://party/party_two.tscn" id="2_0npn6"]
 [ext_resource type="Script" uid="uid://d1hb2bpcv6p5g" path="res://enemies.gd" id="2_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://hrohi3tq2urq" path="res://battle_ui.tscn" id="3_i431l"]
-[ext_resource type="PackedScene" uid="uid://frcd7uih5g0p" path="res://party_three.tscn" id="3_mhv3b"]
-[ext_resource type="PackedScene" uid="uid://dmb28t2gdeue1" path="res://party_four.tscn" id="4_lcjiy"]
+[ext_resource type="PackedScene" uid="uid://frcd7uih5g0p" path="res://party/party_three.tscn" id="3_mhv3b"]
+[ext_resource type="PackedScene" uid="uid://dmb28t2gdeue1" path="res://party/party_four.tscn" id="4_lcjiy"]
 
 [node name="Node2D" type="Node2D" unique_id=252782997]
 

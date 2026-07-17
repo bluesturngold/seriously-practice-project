@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mq7bvwc4iqyj" path="res://battler.gd" id="1_qvqoo"]
 [ext_resource type="PackedScene" uid="uid://cacc0jv6vygkk" path="res://health_bar.tscn" id="2_apmrc"]
-[ext_resource type="Resource" uid="uid://gy0h6kdw3oq1" path="res://boss_slime.tres" id="2_fwqr1"]
+[ext_resource type="Resource" uid="uid://gy0h6kdw3oq1" path="res://bosses/boss stats/boss_slime.tres" id="2_fwqr1"]
 [ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_fwqr1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f1e7h"]

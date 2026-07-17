@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dums4boloq12a"]
 
 [ext_resource type="Script" uid="uid://btawmrcctl8b6" path="res://boss_zone.gd" id="1_nichv"]
-[ext_resource type="PackedScene" uid="uid://w3br06eynv54" path="res://boss_slime.tscn" id="2_feufh"]
+[ext_resource type="PackedScene" uid="uid://w3br06eynv54" path="res://bosses/boss_slime.tscn" id="2_feufh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feufh"]
 

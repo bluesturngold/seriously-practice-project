@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckaqq0jk0kvx8"]
 
 [ext_resource type="Script" uid="uid://mq7bvwc4iqyj" path="res://battler.gd" id="1_4l1t8"]
-[ext_resource type="Resource" uid="uid://co3trxhad74p5" path="res://slime.tres" id="2_ppcr1"]
+[ext_resource type="Resource" uid="uid://co3trxhad74p5" path="res://enemies/enemy stats/slime.tres" id="2_ppcr1"]
 [ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_jayke"]
 [ext_resource type="PackedScene" uid="uid://cacc0jv6vygkk" path="res://health_bar.tscn" id="3_ppcr1"]
 

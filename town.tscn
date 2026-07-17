@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://doy2c33pias31"]
 
 [ext_resource type="Script" uid="uid://bhchj8ohiwahf" path="res://town.gd" id="1_dwdjc"]
-[ext_resource type="TileSet" uid="uid://bi6mg1wjo58gh" path="res://beach_town.tres" id="2_e8yg3"]
+[ext_resource type="TileSet" uid="uid://bi6mg1wjo58gh" path="res://tilesets/beach_town.tres" id="2_e8yg3"]
 [ext_resource type="PackedScene" uid="uid://ej4y1i60l8oe" path="res://spawn_point.tscn" id="2_gwqsq"]
 [ext_resource type="PackedScene" uid="uid://ch5j4m06de7dw" path="res://map_transition.tscn" id="4_gwqsq"]
 [ext_resource type="PackedScene" uid="uid://o7wudocu0cpp" path="res://player.tscn" id="5_nki3b"]

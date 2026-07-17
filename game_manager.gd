@@ -253,21 +253,25 @@ func is_encounter_immune() -> bool:
 var inventory: Array[Dictionary] = []
 
 func _ready() -> void:
-	var starting_potion: Item = load("res://potion.tres")
-	starting_potion.source_path = "res://potion.tres"
+	print_rich("[color=yellow]--- CURRENT SCENE TREE ---[/color]")
+	get_tree().root.print_tree_pretty()
+	# Print the entire active scene tree to Output to see if nodes are missing or misplaced
+	
+	var starting_potion: Item = load("res://items/potion.tres")
+	starting_potion.source_path = "res://items/potion.tres"
 	add_item(starting_potion, 3)
 
-	var starting_tonic: Item = load("res://tonic.tres")
-	starting_tonic.source_path = "res://tonic.tres"
+	var starting_tonic: Item = load("res://items/tonic.tres")
+	starting_tonic.source_path = "res://items/tonic.tres"
 	add_item(starting_tonic, 2)
 
 	var starting_party_files: Array[String] = [
-		"res://party_one.tres",
-		"res://party_two.tres",
-		"res://party_three.tres",
-		"res://party_four.tres"
+		"res://party/party stats/party_one.tres",
+		"res://party/party stats/party_two.tres",
+		"res://party/party stats/party_three.tres",
+		"res://party/party stats/party_four.tres"
 	]
-
+		
 	for path in starting_party_files:
 		var stats: CharacterStats = load(path).duplicate()
 		stats.source_path = path

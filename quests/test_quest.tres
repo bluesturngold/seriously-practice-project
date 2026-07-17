@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1o7623lhv7i0" path="res://item.gd" id="1_ywomn"]
 [ext_resource type="Script" uid="uid://bc40qs0mjp5eh" path="res://quest.gd" id="2_5svu2"]
-[ext_resource type="Resource" uid="uid://cvfuawlgxgcyd" path="res://potion.tres" id="2_hc0p0"]
+[ext_resource type="Resource" uid="uid://cvfuawlgxgcyd" path="res://items/potion.tres" id="2_hc0p0"]
 
 [resource]
 script = ExtResource("2_5svu2")

@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://byi67u04nquu4"]
 
 [ext_resource type="Script" uid="uid://ct7fouc10sepo" path="res://overworld.gd" id="1_6jwp1"]
-[ext_resource type="TileSet" uid="uid://bi6mg1wjo58gh" path="res://beach_town.tres" id="2_ac3tn"]
+[ext_resource type="TileSet" uid="uid://bi6mg1wjo58gh" path="res://tilesets/beach_town.tres" id="2_ac3tn"]
 [ext_resource type="PackedScene" uid="uid://b7afju7nspo2k" path="res://encounter_zone.tscn" id="2_nyb65"]
 [ext_resource type="PackedScene" uid="uid://o7wudocu0cpp" path="res://player.tscn" id="3_824ie"]
-[ext_resource type="PackedScene" uid="uid://ckaqq0jk0kvx8" path="res://slime.tscn" id="3_omswd"]
+[ext_resource type="PackedScene" uid="uid://ckaqq0jk0kvx8" path="res://enemies/slime.tscn" id="3_omswd"]
 [ext_resource type="PackedScene" uid="uid://dgg8paeiwk0y5" path="res://dialogue_box.tscn" id="5_m4qw5"]
 [ext_resource type="PackedScene" uid="uid://dums4boloq12a" path="res://boss_zone.tscn" id="5_omswd"]
 [ext_resource type="Script" uid="uid://btmo45unde02f" path="res://interact_button.gd" id="6_5xcxp"]
@@ -16,10 +16,10 @@
 [ext_resource type="Script" uid="uid://cqy7fqqlgkdsg" path="res://pause_menu.gd" id="9_vnleo"]
 [ext_resource type="Script" uid="uid://c1o7623lhv7i0" path="res://item.gd" id="10_u40xr"]
 [ext_resource type="Script" uid="uid://c4vx8emxs2o75" path="res://inventory_panel.gd" id="10_vnleo"]
-[ext_resource type="Resource" uid="uid://cvfuawlgxgcyd" path="res://potion.tres" id="11_4op41"]
+[ext_resource type="Resource" uid="uid://cvfuawlgxgcyd" path="res://items/potion.tres" id="11_4op41"]
 [ext_resource type="Script" uid="uid://qtlb4ivu7ll2" path="res://stats_panel.gd" id="11_lc4f4"]
 [ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="12_6cww0"]
-[ext_resource type="Resource" uid="uid://283rqta8uc4o" path="res://tonic.tres" id="12_sgylu"]
+[ext_resource type="Resource" uid="uid://283rqta8uc4o" path="res://items/tonic.tres" id="12_sgylu"]
 [ext_resource type="PackedScene" uid="uid://esw3hi5vuiol" path="res://obstacle.tscn" id="13_4op41"]
 [ext_resource type="Script" uid="uid://eled62tse02f" path="res://load_panel.gd" id="13_51c5s"]
 [ext_resource type="Script" uid="uid://cy8xljtxojcws" path="res://settings_panel.gd" id="13_tjo62"]
@@ -43,7 +43,7 @@ tile_map_data = PackedByteArray("AAALAAIAAAALAAEAAAALAAMAAAALAAIAAAAMAAIAAAAMAAE
 tile_set = ExtResource("2_ac3tn")
 
 [node name="Player" parent="." unique_id=1216527473 instance=ExtResource("3_824ie")]
-position = Vector2(200, 72)
+position = Vector2(959, 540)
 
 [node name="EncounterZone" parent="." unique_id=1135128179 instance=ExtResource("2_nyb65")]
 position = Vector2(936, 540)
@@ -53,7 +53,6 @@ encounter_chance = 0.75
 cooldown_time = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1736325808]
-visible = false
 
 [node name="HUD" type="Control" parent="CanvasLayer" unique_id=271834105]
 layout_mode = 3
@@ -440,3 +439,28 @@ spawn_id = "from_town"
 [node name="MapTransition" parent="." unique_id=1137061215 instance=ExtResource("26_odpsm")]
 position = Vector2(1910, 454)
 destination_scene_path = "res://town.tscn"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1690758129]
+position = Vector2(959.74994, 564.25)
+scale = Vector2(0.16015637, 0.16796866)
+texture = ExtResource("12_6cww0")
+
+[node name="Icon2" type="Sprite2D" parent="." unique_id=750784307]
+position = Vector2(961, 631)
+scale = Vector2(0.16015637, 0.16796866)
+texture = ExtResource("12_6cww0")
+
+[node name="Icon3" type="Sprite2D" parent="." unique_id=1573037362]
+position = Vector2(960, 517)
+scale = Vector2(0.16015637, 0.16796866)
+texture = ExtResource("12_6cww0")
+
+[node name="Icon4" type="Sprite2D" parent="." unique_id=1363457269]
+position = Vector2(984, 539)
+scale = Vector2(0.16015637, 0.16796866)
+texture = ExtResource("12_6cww0")
+
+[node name="Icon5" type="Sprite2D" parent="." unique_id=1600338965]
+position = Vector2(936, 540)
+scale = Vector2(0.16015637, 0.16796866)
+texture = ExtResource("12_6cww0")

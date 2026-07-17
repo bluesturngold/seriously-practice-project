@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ujdqnqndxx0y"]
 
 [ext_resource type="Script" uid="uid://mq7bvwc4iqyj" path="res://battler.gd" id="1_7n4q5"]
-[ext_resource type="Resource" uid="uid://db3ya7bxlwo68" path="res://party_two.tres" id="2_7n4q5"]
+[ext_resource type="Resource" uid="uid://db3ya7bxlwo68" path="res://party/party stats/party_two.tres" id="2_7n4q5"]
 [ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_mlrhs"]
 [ext_resource type="PackedScene" uid="uid://cacc0jv6vygkk" path="res://health_bar.tscn" id="4_t2igv"]
 
