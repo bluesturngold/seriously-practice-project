@@ -140,7 +140,8 @@ size = Vector2(2, 2)
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=641210446]
-position = Vector2(2.9802322e-07, 1.9073486e-06)
+position = Vector2(2.9802322e-07, 5.364418e-07)
+scale = Vector2(1, 1.0000001)
 sprite_frames = SubResource("SpriteFrames_hqtel")
 animation = &"walk_up"
 
