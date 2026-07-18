@@ -1,3 +1,4 @@
+# game_manager.gd
 extends Node
 
 var pending_spawn_point: String = ""
@@ -37,20 +38,26 @@ func register_enemy_defeated(enemy_name: String) -> void:
 				_complete_quest(quest_id)
 
 func place_player_at_spawn(scene_root: Node) -> void:
+	# Deprecated helper redirected to the unified initializer
+	initialize_player_position(scene_root)
+
+func initialize_player_position(scene_root: Node) -> void:
 	var player := scene_root.get_tree().get_first_node_in_group("player")
 	if player == null:
 		return
 
-	if pending_spawn_point.is_empty():
-		return
+	# 1. If we transitioned maps, use the target spawn point
+	if not pending_spawn_point.is_empty():
+		for marker in scene_root.get_tree().get_nodes_in_group("spawn_points"):
+			if marker.spawn_id == pending_spawn_point:
+				player.global_position = marker.global_position
+				pending_spawn_point = ""
+				return
+		push_warning("No spawn point found matching: " + pending_spawn_point)
 
-	for marker in scene_root.get_tree().get_nodes_in_group("spawn_points"):
-		if marker.spawn_id == pending_spawn_point:
-			player.global_position = marker.global_position
-			pending_spawn_point = ""
-			return
-
-	push_warning("No spawn point found matching: " + pending_spawn_point)
+	# 2. Otherwise, if we loaded a save file, restore the saved overworld coordinates
+	elif player_overworld_position != Vector2.ZERO:
+		player.global_position = player_overworld_position
 
 func _complete_quest(quest_id: String) -> void:
 	var entry: Dictionary = active_quests[quest_id]
@@ -88,6 +95,12 @@ func has_save(slot: String) -> bool:
 
 func save_game(slot: String) -> void:
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
+
+	# Update live overworld coordinates if we are currently in an overworld or town map
+	var player = get_tree().get_first_node_in_group("player")
+	if player != null:
+		player_overworld_position = player.global_position
+		overworld_scene_path = get_tree().current_scene.scene_file_path
 
 	var party_data: Array = []
 	for stats in party_stats:
@@ -255,8 +268,9 @@ var inventory: Array[Dictionary] = []
 func _ready() -> void:
 	print_rich("[color=yellow]--- CURRENT SCENE TREE ---[/color]")
 	get_tree().root.print_tree_pretty()
-	# Print the entire active scene tree to Output to see if nodes are missing or misplaced
-	
+	_init_starting_state()
+
+func _init_starting_state() -> void:
 	var starting_potion: Item = load("res://items/potion.tres")
 	starting_potion.source_path = "res://items/potion.tres"
 	add_item(starting_potion, 3)
@@ -276,6 +290,23 @@ func _ready() -> void:
 		var stats: CharacterStats = load(path).duplicate()
 		stats.source_path = path
 		register_stats(stats)
+
+func reset_game() -> void:
+	pending_spawn_point = ""
+	overworld_scene_path = "res://overworld.tscn"
+	player_overworld_position = Vector2.ZERO
+	player_currency = 0
+	distance_since_last_step = 0.0
+	steps_since_last_regen = 0
+	pending_encounter_is_boss = false
+	talked_to_npcs.clear()
+	pending_load_confirmation = false
+	active_quests.clear()
+	completed_quest_ids.clear()
+	defeated_encounter_zones.clear()
+	inventory.clear()
+	party_stats.clear()
+	_init_starting_state()
 
 func add_item(item: Item, quantity: int = 1) -> void:
 	for entry in inventory:

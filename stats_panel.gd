@@ -1,3 +1,4 @@
+# stats_panel.gd
 extends Control
 
 @onready var party_selector: HBoxContainer = $PartySelector
@@ -11,7 +12,9 @@ extends Control
 @onready var experience_label: Label = $StatsDisplay/ExperienceLabel
 
 func refresh() -> void:
+	# Instantly remove children from the tree so the HBoxContainer layout updates immediately
 	for child in party_selector.get_children():
+		party_selector.remove_child(child)
 		child.queue_free()
 
 	for stats in GameManager.party_stats:
@@ -24,7 +27,12 @@ func refresh() -> void:
 		_show_stats(GameManager.party_stats[0])
 
 func _show_stats(stats: CharacterStats) -> void:
-	portrait_rect.texture = stats.portrait
+	# Poland fallback: Use the default icon if no portrait is set
+	if stats.portrait != null:
+		portrait_rect.texture = stats.portrait
+	else:
+		portrait_rect.texture = preload("res://icon.svg")
+		
 	name_label.text = stats.character_name
 	level_label.text = "Level " + str(stats.level)
 	health_label.text = "HP: " + str(stats.current_health) + "/" + str(stats.max_health)

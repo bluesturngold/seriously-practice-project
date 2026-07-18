@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bnbgkcljjommf"]
+
+[ext_resource type="Script" uid="uid://bx0tuwckgy74x" path="res://main_menu.gd" id="1_main_menu"]
+[ext_resource type="Theme" uid="uid://bb6ijcfqsrw7t" path="res://main_theme.tres" id="2_theme"]
+
+[node name="MainMenu" type="Control" unique_id=1115504713]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_main_menu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2082579634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0901961, 0.141176, 1)
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1556615687]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 220.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "Slime Slayer Story"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1233820056]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=433467100]
+layout_mode = 2
+text = "Continue"
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=790692828]
+layout_mode = 2
+text = "New Game"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=291478822]
+layout_mode = 2
+text = "Quit"
+
+[node name="LoadPanel" type="Control" parent="." unique_id=1371361658]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveSlotsLabel" type="Label" parent="LoadPanel" unique_id=1167008623]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = -10.0
+grow_horizontal = 2
+text = "Select Save Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadPanel" unique_id=1447747743]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="ManualSaveButton" type="Button" parent="LoadPanel/VBoxContainer" unique_id=1756275301]
+layout_mode = 2
+text = "Manual Save"
+
+[node name="AutoSaveButton" type="Button" parent="LoadPanel/VBoxContainer" unique_id=1205304216]
+layout_mode = 2
+text = "Auto Save"
+
+[node name="BackButton" type="Button" parent="LoadPanel/VBoxContainer" unique_id=1370743080]
+layout_mode = 2
+text = "Back"

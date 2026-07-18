@@ -1,3 +1,4 @@
+# pause_menu.gd
 extends Control
 
 enum Tab { INVENTORY, STATS }
@@ -92,4 +93,5 @@ func _on_save_confirmation_timeout() -> void:
 	save_confirmation_label.hide()
 
 func _on_quit_pressed() -> void:
-	print("Quit pressed (not yet implemented)")
+	# Return the player to the start screen
+	get_tree().change_scene_to_file("res://main_menu.tscn")

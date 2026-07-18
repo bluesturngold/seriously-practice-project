@@ -165,6 +165,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_vnleo")
 
+[node name="Panel" type="Panel" parent="CanvasLayer/PauseMenu" unique_id=341770571]
+layout_mode = 0
+offset_left = 1412.0
+offset_top = 34.0
+offset_right = 1855.0
+offset_bottom = 441.0
+
 [node name="TabBar" type="HBoxContainer" parent="CanvasLayer/PauseMenu" unique_id=2097205296]
 layout_mode = 0
 offset_left = 1644.0
@@ -296,9 +303,9 @@ text = "Quit!"
 
 [node name="CloseButton" type="Button" parent="CanvasLayer/PauseMenu" unique_id=20720596]
 layout_mode = 0
-offset_left = 1452.0
+offset_left = 1423.0
 offset_top = 40.0
-offset_right = 1552.0
+offset_right = 1523.0
 offset_bottom = 76.0
 text = "Close"
 
