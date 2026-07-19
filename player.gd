@@ -1,3 +1,4 @@
+# player.gd
 extends CharacterBody2D
 
 @export var speed: float = 150.0
@@ -65,9 +66,11 @@ func try_interact() -> void:
 			shop_ui.open_shop(target.shop_inventory)
 	elif target.is_quest_giver:
 		if dialogue_box != null:
-			dialogue_box.start_dialogue(target.interact_as_quest_giver())
+			# Forward the speaker's name to the dialogue box
+			dialogue_box.start_dialogue(target.interact_as_quest_giver(), target.get_speaker_name())
 	elif dialogue_box != null:
-		dialogue_box.start_dialogue(target.get_dialogue_to_show())
+		# Forward the speaker's name to the dialogue box
+		dialogue_box.start_dialogue(target.get_dialogue_to_show(), target.get_speaker_name())
 		target.mark_as_talked_to()
 
 func _on_area_entered(area: Area2D) -> void:

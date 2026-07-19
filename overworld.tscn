@@ -43,12 +43,13 @@ tile_map_data = PackedByteArray("AAALAAIAAAALAAEAAAALAAMAAAALAAIAAAAMAAIAAAAMAAE
 tile_set = ExtResource("2_ac3tn")
 
 [node name="Player" parent="." unique_id=1216527473 instance=ExtResource("3_824ie")]
-position = Vector2(855, 524)
+position = Vector2(199, 76)
 
 [node name="EncounterZone" parent="." unique_id=1135128179 instance=ExtResource("2_nyb65")]
-position = Vector2(936, 540)
+position = Vector2(60.999996, 206)
+scale = Vector2(6.118383, 20.655415)
 possible_enemies = Array[PackedScene]([ExtResource("3_omswd")])
-max_enemies = 6
+max_enemies = 2
 encounter_chance = 0.75
 cooldown_time = 2.0
 
@@ -416,12 +417,12 @@ position = Vector2(960, 516)
 zone_id = "123"
 
 [node name="Interactable" parent="." unique_id=398141188 instance=ExtResource("7_87uyu")]
-position = Vector2(773, 578)
-npc_class = 1
-dialogue_lines = Array[String](["Hi, it's me!", "Good morning!", "Have a nice day."])
+position = Vector2(231, 124)
+npc_class = 0
+dialogue_lines = Array[String](["Finally, you're awake!", "It took me so long to find you...", "Please, I know I'm a stranger, but hear me out.", "Each century, a child is born with the ability to see Slimes. As you know, you were that child, but your calling eluded you without a mentor.", "I am that mentor: a hero past his prime, washed up, seeking to pass the torch.", "Your first quest is thus, Slayer... Defeat a Slime!"])
 is_quest_giver = true
 quest = ExtResource("19_7npxb")
-movement_pattern = 1
+movement_pattern = 2
 move_speed = 32.0
 
 [node name="Interactable3" parent="." unique_id=2106634096 instance=ExtResource("7_87uyu")]

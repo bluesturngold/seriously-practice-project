@@ -1,21 +1,31 @@
+# dialogue_box.gd
 extends Control
 
 var lines: Array[String] = []
 var current_index: int = 0
 
 @onready var label: RichTextLabel = $RichTextLabel
+@onready var speaker_panel: Panel = $SpeakerPanel
+@onready var speaker_label: Label = $SpeakerPanel/SpeakerLabel
 
 func _ready() -> void:
 	hide()
 	add_to_group("dialogue_box")
 
-func start_dialogue(new_lines: Array[String]) -> void:
+func start_dialogue(new_lines: Array[String], speaker: String = "") -> void:
 	if new_lines.is_empty():
 		return
 	lines = new_lines
 	current_index = 0
 	show()
 	label.text = lines[current_index]
+	
+	# Dynamically handle speaker tag visibility
+	if speaker.is_empty():
+		speaker_panel.hide()
+	else:
+		speaker_panel.show()
+		speaker_label.text = speaker
 
 func advance() -> void:
 	current_index += 1

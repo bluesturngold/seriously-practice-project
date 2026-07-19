@@ -49,6 +49,7 @@ const CLASS_FILE_NAMES: Dictionary = {
 			_update_npc_sprite()
 
 @export_group("Interaction")
+@export var speaker_name: String = ""
 @export var interactable_id: String = ""
 @export var dialogue_lines: Array[String] = []
 @export var one_time_only: bool = false
@@ -309,6 +310,12 @@ func _determine_next_move() -> void:
 				var collider = raycast.get_collider()
 				print("NPC '", name, "' MEANDER path blocked by: ", collider.name if collider != null else "Unknown")
 			_wait_timer = wait_time
+
+func get_speaker_name() -> String:
+	if not speaker_name.is_empty():
+		return speaker_name
+	# Automatically convert internal enum representation to styled casing (e.g. "MAYOR_MAN" -> "Mayor Man")
+	return NPCClass.keys()[npc_class].capitalize()
 
 func interact_as_quest_giver() -> Array[String]:
 	if quest == null:

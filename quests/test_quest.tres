@@ -6,13 +6,12 @@
 
 [resource]
 script = ExtResource("2_5svu2")
-quest_id = "test_quest"
+quest_id = "slay_one_slime"
 enemy_name = "Slime"
-required_count = 3
-offer_lines = Array[String](["Something's been eating my crops.", "I heard you help people. Can you figure it out?"])
-reminder_lines = Array[String](["Is my garden safe yet?"])
-completion_lines = Array[String](["I haven't had trouble with my plants lately. Thank you, slayer!"])
-reward_currency = 20
+offer_lines = Array[String](["Finally, you're awake!", "It took me so long to find you...", "Please, I know I'm a stranger, but hear me out.", "Each century, a child is born with the ability to see Slimes. As you know, you were that child, but your calling eluded you without a mentor.", "I am that mentor: a hero past his prime, washed up, seeking to pass the torch.", "Your first quest is thus, Slayer... Defeat a Slime!", "(The old man hands you his sword. It feels like it belongs in your hands.)"])
+reminder_lines = Array[String](["Search the beach around your cottage, Slayer.", "You're bound to draw one of those foul Slimes to you eventually."])
+completion_lines = Array[String](["This world is full of those troubled by Slimes.", "Seek them out, and when each town seems secure, find me nearby."])
+reward_currency = 5
 reward_items = Array[ExtResource("1_ywomn")]([ExtResource("2_hc0p0")])
 reward_item_quantities = Array[int]([0])
 metadata/_custom_type_script = "uid://bc40qs0mjp5eh"
