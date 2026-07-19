@@ -1,11 +1,24 @@
 [gd_scene format=3 uid="uid://hankmnol4b2d"]
 
 [ext_resource type="Script" uid="uid://x7tubwhl6qps" path="res://interactable.gd" id="1_wh154"]
+[ext_resource type="SpriteFrames" uid="uid://dhhl6vmwr4gi3" path="res://sprites/npcs/mentor_frames.tres" id="2_jcy0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3v40"]
+size = Vector2(38, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wh154"]
 
 [node name="Interactable" type="Area2D" unique_id=398141188]
 script = ExtResource("1_wh154")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1609914226]
+sprite_frames = ExtResource("2_jcy0q")
+animation = &"walk_up"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=883563603]
 shape = SubResource("RectangleShape2D_x3v40")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=692727541]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1378984029]
+shape = SubResource("RectangleShape2D_wh154")
