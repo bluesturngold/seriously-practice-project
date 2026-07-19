@@ -4,6 +4,6 @@ This is a JRPG project in Godot 4.6.2 with parts that are meant to be easy to re
 
 It's mostly missing bulk (items, abilities, enemy stats, quests), graphics (tilesets, enemies, NPCs), and structure (narratively, and in terms of file organization...)
 
-Placeholder graphics assets are 16x16 and come from Chequered Ink on Itch.io at https://ci.itch.io/all-game-assets.
+Placeholder graphics assets are 16x16 and come from Chequered Ink on Itch.io at https://ci.itch.io/all-game-assets. Please go buy their asset bundle if any of their assets end up in a commercial project you make based off of this.
 
 Font is nesbox's TIC-80 Wide Font on Fontstruct at https://fontstruct.com/fontstructions/show/1388526/tic-80-wide-font used under Creative Commons license. Unmodified.
