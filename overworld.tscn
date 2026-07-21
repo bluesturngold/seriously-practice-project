@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://283rqta8uc4o" path="res://items/tonic.tres" id="12_sgylu"]
 [ext_resource type="PackedScene" uid="uid://esw3hi5vuiol" path="res://obstacle.tscn" id="13_4op41"]
 [ext_resource type="Script" uid="uid://eled62tse02f" path="res://load_panel.gd" id="13_51c5s"]
+[ext_resource type="StyleBox" uid="uid://cawbn8cu2xub3" path="res://new_style_box_flat.tres" id="13_odpsm"]
 [ext_resource type="Script" uid="uid://cy8xljtxojcws" path="res://settings_panel.gd" id="13_tjo62"]
 [ext_resource type="Resource" uid="uid://jur6nr7rj07v" path="res://quests/test_quest.tres" id="19_7npxb"]
 [ext_resource type="PackedScene" uid="uid://ej4y1i60l8oe" path="res://spawn_point.tscn" id="25_kd83f"]
@@ -69,23 +70,34 @@ grow_vertical = 2
 theme = ExtResource("6_uo8xi")
 script = ExtResource("6_jc28h")
 
-[node name="InteractButton" type="Button" parent="CanvasLayer/HUD" unique_id=332054782]
-layout_mode = 0
-offset_left = 1731.0
-offset_top = 1005.0
-offset_right = 1879.0
-offset_bottom = 1041.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD" unique_id=702261771]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD/MarginContainer" unique_id=894465726]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="InteractButton" type="Button" parent="CanvasLayer/HUD/MarginContainer/HBoxContainer" unique_id=332054782]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 theme = ExtResource("6_uo8xi")
 text = "Interact
 "
 script = ExtResource("6_5xcxp")
 
-[node name="PauseButton" type="Button" parent="CanvasLayer/HUD" unique_id=1685959173]
-layout_mode = 0
-offset_left = 1451.0
-offset_top = 1005.0
-offset_right = 1551.0
-offset_bottom = 1041.0
+[node name="PauseButton" type="Button" parent="CanvasLayer/HUD/MarginContainer/HBoxContainer" unique_id=1685959173]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 text = "Pause
 "
 script = ExtResource("7_y687k")
@@ -110,10 +122,10 @@ anchor_left = -0.201
 anchor_top = -0.202
 anchor_right = 0.799
 anchor_bottom = 0.79800004
-offset_left = -0.07998657
-offset_top = 0.16000366
-offset_right = -0.080078125
-offset_bottom = 0.15997314
+offset_left = 383.92
+offset_top = 221.16
+offset_right = 383.91992
+offset_bottom = 221.15997
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_lgqhf")
@@ -154,91 +166,136 @@ text = "Close Shop"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=690722451]
 layout_mode = 3
-anchor_left = -0.2
-anchor_top = -0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-offset_left = 195.0
-offset_top = 14.0
-offset_right = 195.0
-offset_bottom = 14.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_vnleo")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/PauseMenu" unique_id=341770571]
-layout_mode = 0
-offset_left = 1412.0
-offset_top = 34.0
-offset_right = 1855.0
-offset_bottom = 441.0
+[node name="BackgroundDim" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=139001425]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29803923, 0.29803923, 0.29803923, 0.69411767)
 
-[node name="TabBar" type="HBoxContainer" parent="CanvasLayer/PauseMenu" unique_id=2097205296]
-layout_mode = 0
-offset_left = 1644.0
-offset_top = 40.0
-offset_right = 1848.0
-offset_bottom = 76.0
+[node name="SidebarContainer" type="PanelContainer" parent="CanvasLayer/PauseMenu" unique_id=157378626]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -416.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("6_uo8xi")
+theme_override_styles/panel = ExtResource("13_odpsm")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/SidebarContainer" unique_id=1278966993]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer" unique_id=1525933480]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer" unique_id=1637690167]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TabBar" type="HBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/TopRow" unique_id=2097205296]
+unique_name_in_owner = true
+layout_mode = 2
 theme = ExtResource("6_uo8xi")
 
-[node name="InventoryTabButton" type="Button" parent="CanvasLayer/PauseMenu/TabBar" unique_id=929409605]
+[node name="InventoryTabButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/TopRow/TabBar" unique_id=929409605]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Items"
 
-[node name="StatsTabButton" type="Button" parent="CanvasLayer/PauseMenu/TabBar" unique_id=97706679]
+[node name="StatsTabButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/TopRow/TabBar" unique_id=97706679]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Party"
 
-[node name="InventoryPanel" type="Control" parent="CanvasLayer/PauseMenu" unique_id=1617553157]
-anchors_preset = 0
-offset_left = 1644.0
-offset_top = 84.0
-offset_right = 1847.0
-offset_bottom = 348.0
+[node name="CloseButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/TopRow" unique_id=20720596]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
+
+[node name="Control" type="Control" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer" unique_id=420054712]
+layout_mode = 2
+
+[node name="ContentArea" type="Control" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer" unique_id=1228303110]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InventoryPanel" type="Control" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea" unique_id=1617553157]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("6_uo8xi")
 script = ExtResource("10_vnleo")
 
-[node name="ItemList" type="VBoxContainer" parent="CanvasLayer/PauseMenu/InventoryPanel" unique_id=131254984]
-layout_mode = 0
-offset_top = 2.0
-offset_right = 204.0
-offset_bottom = 266.0
+[node name="ItemList" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/InventoryPanel" unique_id=131254984]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PartyTargetList" type="VBoxContainer" parent="CanvasLayer/PauseMenu/InventoryPanel" unique_id=909795680]
-layout_mode = 0
-offset_left = -192.0
-offset_top = 2.0
-offset_right = 204.0
-offset_bottom = 266.0
+[node name="PartyTargetList" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/InventoryPanel" unique_id=909795680]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -396.0
+offset_bottom = -920.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="StatsPanel" type="Control" parent="CanvasLayer/PauseMenu" unique_id=783125086]
-anchors_preset = 0
-offset_left = 1679.0
-offset_top = 117.0
-offset_right = 1844.0
-offset_bottom = 379.0
+[node name="StatsPanel" type="Control" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea" unique_id=783125086]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("6_uo8xi")
 script = ExtResource("11_lc4f4")
 
-[node name="PartySelector" type="HBoxContainer" parent="CanvasLayer/PauseMenu/StatsPanel" unique_id=435707937]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel" unique_id=697659521]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.86100006
-anchor_right = -0.86100006
-offset_left = -84.935
-offset_top = -37.0
-offset_right = 228.065
-offset_bottom = 3.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="StatsDisplay" type="VBoxContainer" parent="CanvasLayer/PauseMenu/StatsPanel" unique_id=429050598]
-layout_mode = 0
-offset_left = -138.0
-offset_top = 11.0
-offset_right = 66.0
-offset_bottom = 200.0
+[node name="PartySelector" type="HBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer" unique_id=435707937]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatsDisplay" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer" unique_id=429050598]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("6_uo8xi")
 
-[node name="PortraitRect" type="TextureRect" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=1365808459]
+[node name="PortraitRect" type="TextureRect" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=1365808459]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -246,171 +303,162 @@ size_flags_vertical = 0
 texture = ExtResource("12_6cww0")
 expand_mode = 1
 
-[node name="NameLabel" type="Label" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=1971072448]
+[node name="NameLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=1971072448]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=1506193900]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=1506193900]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="HealthLabel" type="Label" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=1186022454]
+[node name="HealthLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=1186022454]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="ManaLabel" type="Label" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=812092500]
+[node name="ManaLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=812092500]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="AttackLabel" type="Label" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=1159387832]
+[node name="AttackLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=1159387832]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="DefenseLabel" type="Label" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=2044658821]
+[node name="DefenseLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=2044658821]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="ExperienceLabel" type="Label" parent="CanvasLayer/PauseMenu/StatsPanel/StatsDisplay" unique_id=41208505]
+[node name="ExperienceLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/StatsPanel/VBoxContainer/StatsDisplay" unique_id=41208505]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="BottomBar" type="HBoxContainer" parent="CanvasLayer/PauseMenu" unique_id=216106850]
-layout_mode = 0
-offset_left = 1452.0
-offset_top = 298.0
-offset_right = 1848.0
-offset_bottom = 338.0
-theme = ExtResource("6_uo8xi")
-
-[node name="SaveButton" type="Button" parent="CanvasLayer/PauseMenu/BottomBar" unique_id=1273350859]
-layout_mode = 2
-theme = ExtResource("6_uo8xi")
-text = "Save"
-
-[node name="LoadButton" type="Button" parent="CanvasLayer/PauseMenu/BottomBar" unique_id=1437151185]
-layout_mode = 2
-theme = ExtResource("6_uo8xi")
-text = "Load"
-
-[node name="SettingsButton" type="Button" parent="CanvasLayer/PauseMenu/BottomBar" unique_id=280106492]
-layout_mode = 2
-theme = ExtResource("6_uo8xi")
-text = "System"
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/PauseMenu/BottomBar" unique_id=2100780056]
-layout_mode = 2
-theme = ExtResource("6_uo8xi")
-text = "Quit!"
-
-[node name="CloseButton" type="Button" parent="CanvasLayer/PauseMenu" unique_id=20720596]
-layout_mode = 0
-offset_left = 1423.0
-offset_top = 40.0
-offset_right = 1523.0
-offset_bottom = 76.0
-text = "Close"
-
-[node name="SettingsPanel" type="Control" parent="CanvasLayer/PauseMenu" unique_id=1350689606]
-anchors_preset = 0
-offset_left = 1480.0
-offset_top = 339.0
-offset_right = 1663.0
-offset_bottom = 894.0
+[node name="SettingsPanel" type="Control" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea" unique_id=1350689606]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("13_tjo62")
 
-[node name="ResolutionOption" type="OptionButton" parent="CanvasLayer/PauseMenu/SettingsPanel" unique_id=294167164]
-layout_mode = 0
-offset_left = -28.0
-offset_top = 7.0
-offset_right = 148.0
-offset_bottom = 47.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/SettingsPanel" unique_id=688998376]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
 
-[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/PauseMenu/SettingsPanel" unique_id=1323732026]
-layout_mode = 0
-offset_left = 197.0
-offset_top = 30.0
-offset_right = 368.0
-offset_bottom = 46.0
+[node name="ResolutionOption" type="OptionButton" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/SettingsPanel/VBoxContainer" unique_id=294167164]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/SettingsPanel/VBoxContainer" unique_id=1730997207]
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/SettingsPanel/VBoxContainer" unique_id=1323732026]
+layout_mode = 2
 theme = ExtResource("6_uo8xi")
 rounded = true
 tick_count = 10
 ticks_on_borders = true
 ticks_position = 2
 
-[node name="BackButton" type="Button" parent="CanvasLayer/PauseMenu/SettingsPanel" unique_id=1629475864]
-layout_mode = 0
-offset_left = 92.0
-offset_top = 246.0
-offset_right = 176.0
-offset_bottom = 282.0
+[node name="BackButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/SettingsPanel/VBoxContainer" unique_id=1629475864]
+layout_mode = 2
 text = "Back"
 
-[node name="VolumeLabel" type="Label" parent="CanvasLayer/PauseMenu/SettingsPanel" unique_id=1730997207]
-layout_mode = 0
-offset_left = 197.0
-offset_top = 8.0
-offset_right = 368.0
-offset_bottom = 24.0
-theme = ExtResource("6_uo8xi")
-text = "Master Volume"
-horizontal_alignment = 1
-
-[node name="LoadPanel" type="Control" parent="CanvasLayer/PauseMenu" unique_id=405301471]
-anchors_preset = 0
-offset_left = 1542.0
-offset_top = 312.0
-offset_right = 1650.0
-offset_bottom = 352.0
+[node name="LoadPanel" type="Control" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea" unique_id=405301471]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("6_uo8xi")
 script = ExtResource("13_51c5s")
 
-[node name="ManualSaveButton" type="Button" parent="CanvasLayer/PauseMenu/LoadPanel" unique_id=683223195]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/LoadPanel" unique_id=414946450]
 layout_mode = 0
-offset_top = 34.0
-offset_right = 116.0
-offset_bottom = 74.0
-theme = ExtResource("6_uo8xi")
-text = "Manual"
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
 
-[node name="AutoSaveButton" type="Button" parent="CanvasLayer/PauseMenu/LoadPanel" unique_id=1419753026]
-layout_mode = 0
-offset_left = -90.0
-offset_top = 34.0
-offset_right = -6.0
-offset_bottom = 74.0
-theme = ExtResource("6_uo8xi")
-text = "Auto"
-
-[node name="BackButton" type="Button" parent="CanvasLayer/PauseMenu/LoadPanel" unique_id=858353364]
-layout_mode = 0
-offset_left = -24.0
-offset_top = 83.0
-offset_right = 60.0
-offset_bottom = 119.0
-theme = ExtResource("6_uo8xi")
-text = "Back"
-
-[node name="SaveSlotsLabel" type="Label" parent="CanvasLayer/PauseMenu/LoadPanel" unique_id=978377557]
-layout_mode = 0
-offset_left = -120.0
-offset_top = -20.0
-offset_right = 144.0
-offset_bottom = 22.0
-text = "Choose Save to Load
-(Autosaves occur after
-every victory.)"
+[node name="SaveSlotsLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/LoadPanel/VBoxContainer" unique_id=978377557]
+layout_mode = 2
+text = "Choose Save to Load"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SaveConfirmationLabel" type="Label" parent="CanvasLayer/PauseMenu" unique_id=2044820518]
-layout_mode = 0
-offset_left = 1132.0
-offset_top = 1028.0
-offset_right = 1312.0
-offset_bottom = 1040.0
+[node name="ManualSaveButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/LoadPanel/VBoxContainer" unique_id=683223195]
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "Manual"
+
+[node name="AutoSaveButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/LoadPanel/VBoxContainer" unique_id=1419753026]
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "Auto"
+
+[node name="AutoSaveSlotLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/LoadPanel/VBoxContainer" unique_id=950473265]
+layout_mode = 2
+text = "Autosaves occur after
+every victory."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadBackButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/ContentArea/LoadPanel/VBoxContainer" unique_id=858353364]
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "Back"
+
+[node name="SaveConfirmationLabel" type="Label" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer" unique_id=2044820518]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Saved manually!"
 
-[node name="SaveConfirmationTimer" type="Timer" parent="CanvasLayer/PauseMenu" unique_id=115558990]
+[node name="SaveConfirmationTimer" type="Timer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer" unique_id=115558990]
+unique_name_in_owner = true
+
+[node name="BottomBar" type="HBoxContainer" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer" unique_id=216106850]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+
+[node name="SaveButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/BottomBar" unique_id=1273350859]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/BottomBar" unique_id=1437151185]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "Load"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/BottomBar" unique_id=280106492]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "System"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/PauseMenu/SidebarContainer/MarginContainer/VBoxContainer/BottomBar" unique_id=2100780056]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_uo8xi")
+text = "Quit!"
 
 [node name="BossZone" parent="." unique_id=597308560 instance=ExtResource("5_omswd")]
 position = Vector2(960, 516)

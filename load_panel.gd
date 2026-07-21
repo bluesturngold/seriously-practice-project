@@ -1,10 +1,11 @@
+# load_panel.gd
 extends Control
 
 signal back_pressed
 
-@onready var manual_button: Button = $ManualSaveButton
-@onready var auto_button: Button = $AutoSaveButton
-@onready var back_button: Button = $BackButton
+@onready var manual_button: Button = $VBoxContainer/ManualSaveButton
+@onready var auto_button: Button = $VBoxContainer/AutoSaveButton
+@onready var back_button: Button = $VBoxContainer/LoadBackButton
 
 func _ready() -> void:
 	manual_button.pressed.connect(func(): GameManager.load_game("manual"))

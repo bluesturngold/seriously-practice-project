@@ -1,15 +1,16 @@
 # stats_panel.gd
 extends Control
 
-@onready var party_selector: HBoxContainer = $PartySelector
-@onready var portrait_rect: TextureRect = $StatsDisplay/PortraitRect
-@onready var name_label: Label = $StatsDisplay/NameLabel
-@onready var level_label: Label = $StatsDisplay/LevelLabel
-@onready var health_label: Label = $StatsDisplay/HealthLabel
-@onready var mana_label: Label = $StatsDisplay/ManaLabel
-@onready var attack_label: Label = $StatsDisplay/AttackLabel
-@onready var defense_label: Label = $StatsDisplay/DefenseLabel
-@onready var experience_label: Label = $StatsDisplay/ExperienceLabel
+# Use Scene Unique Names (%) so these can be nested inside any container without breaking
+@onready var party_selector: HBoxContainer = %PartySelector
+@onready var portrait_rect: TextureRect = %StatsDisplay/PortraitRect
+@onready var name_label: Label = %StatsDisplay/NameLabel
+@onready var level_label: Label = %StatsDisplay/LevelLabel
+@onready var health_label: Label = %StatsDisplay/HealthLabel
+@onready var mana_label: Label = %StatsDisplay/ManaLabel
+@onready var attack_label: Label = %StatsDisplay/AttackLabel
+@onready var defense_label: Label = %StatsDisplay/DefenseLabel
+@onready var experience_label: Label = %StatsDisplay/ExperienceLabel
 
 func refresh() -> void:
 	# Instantly remove children from the tree so the HBoxContainer layout updates immediately
@@ -27,7 +28,7 @@ func refresh() -> void:
 		_show_stats(GameManager.party_stats[0])
 
 func _show_stats(stats: CharacterStats) -> void:
-	# Poland fallback: Use the default icon if no portrait is set
+	# Fallback: Use the default icon if no portrait is set
 	if stats.portrait != null:
 		portrait_rect.texture = stats.portrait
 	else:
