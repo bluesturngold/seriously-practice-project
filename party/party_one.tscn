@@ -2,18 +2,29 @@
 
 [ext_resource type="Script" uid="uid://mq7bvwc4iqyj" path="res://battler.gd" id="1_u1ipw"]
 [ext_resource type="Resource" uid="uid://byo5jscffwijv" path="res://party/party stats/party_one.tres" id="2_xpv8o"]
-[ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_iyggp"]
+[ext_resource type="Texture2D" uid="uid://deg7iypdmisbn" path="res://sprites/prince_spritesheet.png" id="3_0yqfb"]
 [ext_resource type="PackedScene" uid="uid://cacc0jv6vygkk" path="res://health_bar.tscn" id="4_xpv8o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl3eb"]
+atlas = ExtResource("3_0yqfb")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0btud"]
+atlas = ExtResource("3_0yqfb")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r1f3e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_iyggp")
+"texture": SubResource("AtlasTexture_xl3eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0btud")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="Hero" type="Node2D" unique_id=1781126513 groups=["party"]]
@@ -22,6 +33,7 @@ stats = ExtResource("2_xpv8o")
 persist_across_scenes = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1426145368]
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_r1f3e")
 
 [node name="HealthBarUI" parent="." unique_id=394278245 instance=ExtResource("4_xpv8o")]

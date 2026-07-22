@@ -1,3 +1,4 @@
+# battle_ui.gd
 extends Control
 
 signal target_chosen(target: Battler)
@@ -7,16 +8,13 @@ signal run_chosen
 
 enum Screen { MAIN, ITEM, ATTACK }
 
-@onready var action_menu: VBoxContainer = $ActionMenu
-@onready var attack_menu: VBoxContainer = $AttackMenu
-@onready var target_menu: VBoxContainer = $TargetMenu
-@onready var item_menu: VBoxContainer = $ItemMenu
-@onready var back_button: Button = $BackButton
-@onready var battle_log: RichTextLabel = $BattleLog
-@onready var turn_label: Label = $TurnLabel
-
-
-
+@onready var action_menu: VBoxContainer = %ActionMenu
+@onready var attack_menu: VBoxContainer = %AttackMenu
+@onready var target_menu: VBoxContainer = %TargetMenu
+@onready var item_menu: VBoxContainer = %ItemMenu
+@onready var back_button: Button = %BackButton
+@onready var battle_log: RichTextLabel = %BattleLog
+@onready var turn_label: Label = %TurnLabel
 
 var pending_item: Item = null
 var pending_ability: Ability = null
@@ -28,12 +26,14 @@ func _ready() -> void:
 	target_menu.hide()
 	item_menu.hide()
 	back_button.hide()
-	$ActionMenu/AttackButton.pressed.connect(_on_attack_pressed)
-	$ActionMenu/ItemButton.pressed.connect(_on_item_pressed)
-	$ActionMenu/RunButton.pressed.connect(_on_run_pressed)
+	
+	# Connect base actions (we look for buttons inside %ActionMenu)
+	%ActionMenu/AttackButton.pressed.connect(_on_attack_pressed)
+	%ActionMenu/ItemButton.pressed.connect(_on_item_pressed)
+	%ActionMenu/RunButton.pressed.connect(_on_run_pressed)
 	back_button.pressed.connect(_on_back_pressed)
 
-	$ActionMenu/RunButton.visible = not GameManager.pending_encounter_is_boss
+	%ActionMenu/RunButton.visible = not GameManager.pending_encounter_is_boss
 
 func set_active_player(player: Battler) -> void:
 	current_active_player = player

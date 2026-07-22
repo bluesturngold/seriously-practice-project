@@ -13,40 +13,40 @@
 [node name="PartyPositions" type="Node2D" parent="." unique_id=1004841635]
 
 [node name="Hero" type="Marker2D" parent="PartyPositions" unique_id=1503598816]
-position = Vector2(1755, 165)
+position = Vector2(1715, 150)
 
 [node name="Hero2" type="Marker2D" parent="PartyPositions" unique_id=761042045]
-position = Vector2(1757, 436)
+position = Vector2(1716, 320)
 
 [node name="Hero3" type="Marker2D" parent="PartyPositions" unique_id=1892445338]
-position = Vector2(1760, 683)
+position = Vector2(1718, 490)
 
 [node name="Hero4" type="Marker2D" parent="PartyPositions" unique_id=1556438400]
-position = Vector2(1760, 923)
+position = Vector2(1718, 660)
 
 [node name="EnemyPositions" type="Node2D" parent="." unique_id=1762431791]
 position = Vector2(0, 18)
 
 [node name="EnemyOne" type="Marker2D" parent="EnemyPositions" unique_id=604544836]
-position = Vector2(846, 159)
+position = Vector2(846, 150)
 
 [node name="EnemyTwo" type="Marker2D" parent="EnemyPositions" unique_id=655866741]
-position = Vector2(845, 505)
+position = Vector2(845, 410)
 
 [node name="EnemyThree" type="Marker2D" parent="EnemyPositions" unique_id=1311421698]
-position = Vector2(869, 885)
+position = Vector2(869, 670)
 
 [node name="EnemyFour" type="Marker2D" parent="EnemyPositions" unique_id=1966328576]
-position = Vector2(207, 169)
+position = Vector2(207, 150)
 
 [node name="EnemyFive" type="Marker2D" parent="EnemyPositions" unique_id=1598129439]
-position = Vector2(224, 514)
+position = Vector2(224, 410)
 
 [node name="EnemySix" type="Marker2D" parent="EnemyPositions" unique_id=200168553]
-position = Vector2(217, 889)
+position = Vector2(217, 670)
 
 [node name="BossPosition" type="Marker2D" parent="EnemyPositions" unique_id=1957006250]
-position = Vector2(552, 522)
+position = Vector2(552, 410)
 
 [node name="Party" type="Node2D" parent="." unique_id=992037471]
 position = Vector2(738, -187)

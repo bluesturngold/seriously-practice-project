@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://mq7bvwc4iqyj" path="res://battler.gd" id="1_4l1t8"]
 [ext_resource type="Resource" uid="uid://co3trxhad74p5" path="res://enemies/enemy stats/slime.tres" id="2_ppcr1"]
-[ext_resource type="Texture2D" uid="uid://cj5oihaia6i0u" path="res://icon.svg" id="3_jayke"]
 [ext_resource type="PackedScene" uid="uid://cacc0jv6vygkk" path="res://health_bar.tscn" id="3_ppcr1"]
+[ext_resource type="Texture2D" uid="uid://r1b3r5s45go4" path="res://sprites/enemies/slime.png" id="4_mks6d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2002g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_jayke")
+"texture": ExtResource("4_mks6d")
 }],
 "loop": true,
 "name": &"default",
@@ -27,4 +27,5 @@ offset_right = -154.0
 offset_bottom = -93.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225739943]
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_2002g")

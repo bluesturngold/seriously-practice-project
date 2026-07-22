@@ -3,84 +3,133 @@
 [ext_resource type="Script" uid="uid://bf1pf8lq81fu1" path="res://battle_ui.gd" id="1_qyamm"]
 [ext_resource type="Theme" uid="uid://bb6ijcfqsrw7t" path="res://main_theme.tres" id="2_kf0y4"]
 
-[node name="BattleUI" type="Control" unique_id=108858595]
+[node name="BattleUI" type="Control" unique_id=294289288]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_kf0y4")
 script = ExtResource("1_qyamm")
 
-[node name="ActionMenu" type="VBoxContainer" parent="." unique_id=1615831607]
-layout_mode = 0
-offset_left = 1122.0
-offset_top = 798.0
-offset_right = 1238.0
-offset_bottom = 914.0
+[node name="BottomBattlePanel" type="PanelContainer" parent="." unique_id=209722033]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -250.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="AttackButton" type="Button" parent="ActionMenu" unique_id=785181033]
+[node name="MarginContainer" type="MarginContainer" parent="BottomBattlePanel" unique_id=892476126]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer" unique_id=280646028]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LogContainer" type="PanelContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=197759509]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/LogContainer" unique_id=722254010]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="BattleLog" type="RichTextLabel" parent="BottomBattlePanel/MarginContainer/HBoxContainer/LogContainer/MarginContainer" unique_id=903151896]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_kf0y4")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+scroll_following = true
+
+[node name="InfoColumn" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=1570675573]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="TurnLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/InfoColumn" unique_id=1813715475]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_kf0y4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuColumn" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=683345798]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn" unique_id=1003915131]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
+
+[node name="MenuContainer" type="Control" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn" unique_id=1293965864]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=1529244924]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="AttackButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=875412047]
 layout_mode = 2
 text = "Attack"
 
-[node name="ItemButton" type="Button" parent="ActionMenu" unique_id=1631591497]
+[node name="ItemButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=564068742]
 layout_mode = 2
 text = "Item"
 
-[node name="RunButton" type="Button" parent="ActionMenu" unique_id=958208530]
+[node name="RunButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=508708900]
 layout_mode = 2
 text = "Run"
 
-[node name="TargetMenu" type="VBoxContainer" parent="." unique_id=1299321706]
-layout_mode = 0
-offset_left = 1122.0
-offset_top = 797.0
-offset_right = 1238.0
-offset_bottom = 1013.0
-
-[node name="BattleLog" type="RichTextLabel" parent="." unique_id=1216799364]
+[node name="AttackMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=284804913]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.67200005
-anchor_top = 0.708
-anchor_right = 0.897
-anchor_bottom = 0.883
-offset_left = -23.240112
-offset_top = 0.35998535
-offset_right = -40.23999
-offset_bottom = -0.0960083
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_kf0y4")
-scroll_following = true
+grow_vertical = 2
+alignment = 1
 
-[node name="ItemMenu" type="VBoxContainer" parent="." unique_id=38995307]
-layout_mode = 0
-offset_left = 1123.0
-offset_top = 797.0
-offset_right = 1238.0
-offset_bottom = 953.0
+[node name="ItemMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=327054633]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="BackButton" type="Button" parent="." unique_id=1469523293]
-layout_mode = 0
-offset_left = 1122.0
-offset_top = 756.0
-offset_right = 1206.0
-offset_bottom = 792.0
-text = "Back"
-
-[node name="AttackMenu" type="VBoxContainer" parent="." unique_id=1663616807]
-layout_mode = 0
-offset_left = 1122.0
-offset_top = 797.0
-offset_right = 1238.0
-offset_bottom = 953.0
-
-[node name="TurnLabel" type="Label" parent="." unique_id=706618996]
-layout_mode = 0
-offset_left = 1259.0
-offset_top = 722.0
-offset_right = 1347.0
-offset_bottom = 759.0
-theme = ExtResource("2_kf0y4")
-vertical_alignment = 1
+[node name="TargetMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=1886347681]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
