@@ -1,3 +1,4 @@
+# battle_controller.gd
 extends Node
 
 enum State { START, PLAYER_CHOICE, PLAYER_ACTION, ENEMY_ACTION, CHECK_END, VICTORY, DEFEAT }
@@ -6,8 +7,13 @@ var current_state: State = State.START
 var active_player: Battler
 var party_turn_queue: Array = []
 
+# Queue to hold sequential slides of the victory summary
+var _victory_messages: Array[String] = []
+
 func _ready() -> void:
 	$"../CanvasLayer/BattleUI".target_chosen.connect(_on_target_chosen)
+	$"../CanvasLayer/BattleUI".defend_chosen.connect(_on_defend_chosen)
+	$"../CanvasLayer/BattleUI".proceed_chosen.connect(_on_proceed_chosen)
 	$"../CanvasLayer/BattleUI".run_chosen.connect(_on_run_chosen)
 	$"../CanvasLayer/BattleUI".ability_used.connect(_on_ability_used)
 	$"../CanvasLayer/BattleUI".item_used.connect(_on_item_used)
@@ -28,16 +34,7 @@ func change_state(new_state: State) -> void:
 		State.CHECK_END:
 			_on_check_end()
 		State.VICTORY:
-			print("You win!")
-			_award_experience()
-			_award_currency()
-			_revive_fallen_party_members()
-			if not GameManager.pending_encounter_zone_id.is_empty():
-				GameManager.mark_zone_defeated(GameManager.pending_encounter_zone_id)
-			GameManager.save_game("auto")
-			$"../CanvasLayer/BattleUI".hide()
-			GameManager.start_encounter_immunity()
-			get_tree().change_scene_to_file(GameManager.overworld_scene_path)
+			_on_victory()
 		State.DEFEAT:
 			print("You lost...")
 			$"../CanvasLayer/BattleUI".hide()
@@ -68,6 +65,8 @@ func _advance_to_next_party_member() -> void:
 		return
 
 	active_player = party_turn_queue.pop_front()
+	
+	active_player.is_defending = false
 
 	for message in active_player.process_status_ticks():
 		_log(message)
@@ -101,6 +100,11 @@ func _on_target_chosen(target: Battler) -> void:
 		change_state(State.CHECK_END)
 	else:
 		_advance_to_next_party_member()
+
+func _on_defend_chosen() -> void:
+	active_player.is_defending = true
+	_log(active_player.stats.character_name + " defends!")
+	_advance_to_next_party_member()
 
 func _on_run_chosen() -> void:
 	var living_enemies: Array = get_tree().get_nodes_in_group("enemies").filter(
@@ -181,6 +185,9 @@ func _on_enemy_action() -> void:
 		if enemy.stats.current_health <= 0:
 			continue
 
+		# Clean slate: Reset defending status at the start of their active turn
+		enemy.is_defending = false
+
 		for message in enemy.process_status_ticks():
 			_log(message)
 
@@ -198,10 +205,48 @@ func _on_enemy_action() -> void:
 
 		$"../CanvasLayer/BattleUI".show_turn(enemy.stats.character_name)
 
-		var target: Battler = living_party.pick_random()
-		var damage_amount: int = int(enemy.stats.attack * enemy.get_attack_modifier())
-		target.take_damage(damage_amount)
-		_log(enemy.stats.character_name + " attacks " + target.stats.character_name + " for " + str(damage_amount) + " damage!")
+		# State machine to decide current enemy action
+		var action_taken: bool = false
+		
+		# 1. Low health defend check
+		var hp_pct: float = float(enemy.stats.current_health) / float(enemy.stats.max_health) if enemy.stats.max_health > 0 else 0.0
+		if hp_pct < 0.33 and randf() < 0.50:
+			enemy.is_defending = true
+			_log(enemy.stats.character_name + " defends!")
+			action_taken = true
+			
+		# 2. 10% Chance to cast a random assigned ability
+		if not action_taken and enemy.stats.abilities.size() > 0 and randf() < 0.10:
+			var ability: Ability = enemy.stats.abilities.pick_random()
+			if enemy.stats.current_mp >= ability.mp_cost:
+				enemy.spend_mp(ability.mp_cost)
+				var damage_amount: int = int(ability.damage_amount * enemy.get_attack_modifier())
+				
+				# Process Multi-Target Ability
+				if ability.target_type == Ability.TargetType.ALL_ENEMIES:
+					for member in living_party:
+						member.take_damage(damage_amount)
+						_log(enemy.stats.character_name + " uses " + ability.ability_name + " on " + member.stats.character_name + " for " + str(damage_amount) + " damage!")
+						if ability.inflicts_status != null:
+							member.apply_status(ability.inflicts_status)
+							_log(member.stats.character_name + " is afflicted with " + ability.inflicts_status.effect_name + "!")
+				# Process Single-Target Ability
+				else:
+					var target: Battler = living_party.pick_random()
+					target.take_damage(damage_amount)
+					_log(enemy.stats.character_name + " uses " + ability.ability_name + " on " + target.stats.character_name + " for " + str(damage_amount) + " damage!")
+					if ability.inflicts_status != null:
+						target.apply_status(ability.inflicts_status)
+						_log(target.stats.character_name + " is afflicted with " + target.stats.character_name + "!")
+						
+				action_taken = true
+				
+		# 3. Regular attack fallback
+		if not action_taken:
+			var target: Battler = living_party.pick_random()
+			var damage_amount: int = int(enemy.stats.attack * enemy.get_attack_modifier())
+			target.take_damage(damage_amount)
+			_log(enemy.stats.character_name + " attacks " + target.stats.character_name + " for " + str(damage_amount) + " damage!")
 
 	change_state(State.CHECK_END)
 
@@ -219,6 +264,101 @@ func _on_check_end() -> void:
 	else:
 		_start_new_round()
 
+func _on_victory() -> void:
+	print("You win!")
+	_victory_messages.clear()
+	
+	# 1. Base enemy currency rewards + Custom Encounter/Boss Zone rewards
+	var total_gold: int = GameManager.pending_encounter_reward_gold
+	var total_exp: int = 0
+	
+	var enemies: Array = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		total_gold += enemy.stats.currency_reward
+		total_exp += enemy.stats.experience_reward
+		
+	# 2. Capture pre-victory stats to calculate exact level up delta points
+	var party: Array = get_tree().get_nodes_in_group("party")
+	var pre_stats: Dictionary = {}
+	for member in party:
+		if member is Battler:
+			pre_stats[member] = {
+				"level": member.stats.level,
+				"max_health": member.stats.max_health,
+				"max_mp": member.stats.max_mp,
+				"attack": member.stats.attack,
+				"defense": member.stats.defense
+			}
+
+	# 3. Award EXP to party
+	for member in party:
+		member.stats.add_experience(total_exp)
+		
+	# 4. Award currency
+	GameManager.add_currency(total_gold)
+	
+	# 5. Award item drops
+	var item_names: Array[String] = []
+	for item in GameManager.pending_encounter_reward_items:
+		if item != null:
+			GameManager.add_item(item, 1)
+			item_names.append(item.item_name)
+			
+	_revive_fallen_party_members()
+	
+	if not GameManager.pending_encounter_zone_id.is_empty():
+		GameManager.mark_zone_defeated(GameManager.pending_encounter_zone_id)
+		
+	# 6. Slide 1: Base victory information
+	var base_msg: String = "You won!\nReceived %d gold and %d EXP." % [total_gold, total_exp]
+	if not item_names.is_empty():
+		base_msg += "\nReceived items: " + ", ".join(item_names)
+	_victory_messages.append(base_msg)
+		
+	# 7. Slides 2+: Dynamic Level-Up Cards
+	for member in party:
+		if member is Battler and pre_stats.has(member):
+			var old = pre_stats[member]
+			var new_stats = member.stats
+			if new_stats.level > old["level"]:
+				var lvl_msg: String = "%s reached Level %d!" % [new_stats.character_name, new_stats.level]
+				lvl_msg += "\n  Max HP: %d -> %d (+%d)" % [old["max_health"], new_stats.max_health, new_stats.max_health - old["max_health"]]
+				lvl_msg += "\n  Max MP: %d -> %d (+%d)" % [old["max_mp"], new_stats.max_mp, new_stats.max_mp - old["max_mp"]]
+				lvl_msg += "\n  Attack: %d -> %d (+%d)" % [old["attack"], new_stats.attack, new_stats.attack - old["attack"]]
+				lvl_msg += "\n  Defense: %d -> %d (+%d)" % [old["defense"], new_stats.defense, new_stats.defense - old["defense"]]
+				_victory_messages.append(lvl_msg)
+		
+	# 8. Start the sequential display
+	_advance_victory_sequence()
+
+func _advance_victory_sequence() -> void:
+	if _victory_messages.is_empty():
+		# Out of messages: perform final exit cleanups
+		_exit_battle_scene()
+		return
+		
+	# Pop the next summary slide and print it cleanly to the box
+	var next_slide: String = _victory_messages.pop_front()
+	_log(next_slide)
+	
+	# Keep the Proceed button visible and focused
+	$"../CanvasLayer/BattleUI".show_victory_state()
+
+func _on_proceed_chosen() -> void:
+	# Progress the slide queue when 'Proceed' is clicked
+	_advance_victory_sequence()
+
+func _exit_battle_scene() -> void:
+	# Clean slate: Clear pending zone rewards
+	GameManager.pending_encounter_reward_gold = 0
+	GameManager.pending_encounter_reward_items.clear()
+	
+	# Auto-save and return
+	GameManager.save_game("auto")
+	$"../CanvasLayer/BattleUI".hide()
+	GameManager.start_encounter_immunity()
+	get_tree().change_scene_to_file(GameManager.overworld_scene_path)
+
 func _position_battlers(battlers: Array, markers: Array) -> void:
 	for i in battlers.size():
 		if i >= markers.size():
@@ -227,26 +367,10 @@ func _position_battlers(battlers: Array, markers: Array) -> void:
 		battlers[i].global_position = markers[i].global_position
 
 func _award_experience() -> void:
-	var enemies: Array = get_tree().get_nodes_in_group("enemies")
-	var party: Array = get_tree().get_nodes_in_group("party")
-
-	var total_experience: int = 0
-	for enemy in enemies:
-		total_experience += enemy.stats.experience_reward
-
-	for member in party:
-		member.stats.add_experience(total_experience)
-		print(member.stats.character_name, " gained ", total_experience, " EXP.")
+	pass # Legacy, integrated into consolidated _on_victory
 
 func _award_currency() -> void:
-	var enemies: Array = get_tree().get_nodes_in_group("enemies")
-
-	var total_currency: int = 0
-	for enemy in enemies:
-		total_currency += enemy.stats.currency_reward
-
-	GameManager.add_currency(total_currency)
-	_log("Found " + str(total_currency) + " gold!")
+	pass # Legacy, integrated into consolidated _on_victory
 
 func _heal_party_to_full() -> void:
 	var party: Array = get_tree().get_nodes_in_group("party")

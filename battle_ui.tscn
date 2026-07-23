@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bf1pf8lq81fu1" path="res://battle_ui.gd" id="1_qyamm"]
 [ext_resource type="Theme" uid="uid://bb6ijcfqsrw7t" path="res://main_theme.tres" id="2_kf0y4"]
 
-[node name="BattleUI" type="Control" unique_id=294289288]
+[node name="BattleUI" type="Control" unique_id=1582847931]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_vertical = 2
 theme = ExtResource("2_kf0y4")
 script = ExtResource("1_qyamm")
 
-[node name="BottomBattlePanel" type="PanelContainer" parent="." unique_id=209722033]
+[node name="BottomBattlePanel" type="PanelContainer" parent="." unique_id=996959940]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -23,66 +23,56 @@ offset_top = -250.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="BottomBattlePanel" unique_id=892476126]
+[node name="MarginContainer" type="MarginContainer" parent="BottomBattlePanel" unique_id=691921103]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer" unique_id=280646028]
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer" unique_id=486617826]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LogContainer" type="PanelContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=197759509]
+[node name="LeftSpacer" type="Control" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=886421326]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="LogContainer" type="PanelContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=164360135]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/LogContainer" unique_id=722254010]
+[node name="LogMarginContainer" type="MarginContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/LogContainer" unique_id=37285044]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="BattleLog" type="RichTextLabel" parent="BottomBattlePanel/MarginContainer/HBoxContainer/LogContainer/MarginContainer" unique_id=903151896]
+[node name="BattleLog" type="RichTextLabel" parent="BottomBattlePanel/MarginContainer/HBoxContainer/LogContainer/LogMarginContainer" unique_id=1952281744]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_kf0y4")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
 scroll_following = true
 
-[node name="InfoColumn" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=1570675573]
-custom_minimum_size = Vector2(180, 0)
+[node name="MenuColumn" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=786696766]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
-alignment = 1
+theme_override_constants/separation = 10
 
-[node name="TurnLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/InfoColumn" unique_id=1813715475]
+[node name="TurnLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn" unique_id=550957864]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("2_kf0y4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MenuColumn" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=683345798]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="BackButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn" unique_id=1003915131]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Back"
-
-[node name="MenuContainer" type="Control" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn" unique_id=1293965864]
+[node name="MenuContainer" type="Control" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn" unique_id=2082226804]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ActionMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=1529244924]
+[node name="ActionMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=1354806019]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -92,19 +82,34 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="AttackButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=875412047]
+[node name="AttackButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=920186468]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Attack"
 
-[node name="ItemButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=564068742]
+[node name="DefendButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=1034405742]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Defend"
+
+[node name="ItemButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=1783763772]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Item"
 
-[node name="RunButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=508708900]
+[node name="RunButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=1670121590]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Run"
 
-[node name="AttackMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=284804913]
+[node name="ProceedButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer/ActionMenu" unique_id=860239348]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Proceed"
+
+[node name="AttackMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=308368419]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -112,24 +117,165 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ItemMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=724563749]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TargetMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=1146000530]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn" unique_id=1855600686]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Back"
+
+[node name="PartyStatusColumn" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer" unique_id=882694532]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ItemMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=327054633]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="HeaderRow" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn" unique_id=1568858489]
+layout_mode = 2
 
-[node name="TargetMenu" type="VBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/MenuColumn/MenuContainer" unique_id=1886347681]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="HeaderName" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/HeaderRow" unique_id=2008812942]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+
+[node name="HeaderHP" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/HeaderRow" unique_id=639697404]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "HP"
+horizontal_alignment = 1
+
+[node name="HeaderMP" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/HeaderRow" unique_id=130884572]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "MP"
+horizontal_alignment = 1
+
+[node name="HeaderStatus" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/HeaderRow" unique_id=1221278855]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Status"
+horizontal_alignment = 1
+
+[node name="MemberRow1" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn" unique_id=522243590]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow1" unique_id=1085044518]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Hero"
+horizontal_alignment = 1
+
+[node name="HPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow1" unique_id=781805669]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "20/20"
+horizontal_alignment = 1
+
+[node name="MPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow1" unique_id=905364160]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "10/10"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow1" unique_id=413521123]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="MemberRow2" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn" unique_id=575997765]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow2" unique_id=643383603]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Hero2"
+horizontal_alignment = 1
+
+[node name="HPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow2" unique_id=1815609014]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "20/20"
+horizontal_alignment = 1
+
+[node name="MPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow2" unique_id=695010910]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "10/10"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow2" unique_id=550266292]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="MemberRow3" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn" unique_id=1054463627]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow3" unique_id=1400928554]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Hero3"
+horizontal_alignment = 1
+
+[node name="HPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow3" unique_id=2008583336]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "20/20"
+horizontal_alignment = 1
+
+[node name="MPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow3" unique_id=1772766966]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "10/10"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow3" unique_id=1867137155]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="MemberRow4" type="HBoxContainer" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn" unique_id=153669406]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow4" unique_id=689829850]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Hero4"
+horizontal_alignment = 1
+
+[node name="HPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow4" unique_id=310378386]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "20/20"
+horizontal_alignment = 1
+
+[node name="MPLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow4" unique_id=1583509616]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "10/10"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="BottomBattlePanel/MarginContainer/HBoxContainer/PartyStatusColumn/MemberRow4" unique_id=707252237]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+horizontal_alignment = 1

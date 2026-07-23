@@ -25,12 +25,14 @@ persist_across_scenes = true
 sprite_frames = SubResource("SpriteFrames_r1f3e")
 
 [node name="HealthBarUI" parent="." unique_id=394278245 instance=ExtResource("4_fco14")]
+visible = false
 offset_left = -194.0
 offset_top = -134.0
 offset_right = -154.0
 offset_bottom = -94.0
 
 [node name="MPLabel" type="Label" parent="." unique_id=991124446]
+visible = false
 offset_left = 78.0
 offset_top = -94.0
 offset_right = 118.0

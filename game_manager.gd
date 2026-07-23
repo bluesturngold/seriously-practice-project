@@ -16,6 +16,10 @@ signal npc_talked_to(id: String)
 signal zone_defeated(id: String)
 signal quest_completed(quest: Quest)
 
+# Caching fields for Encounter / Boss Zone loot drops
+var pending_encounter_reward_items: Array[Item] = []
+var pending_encounter_reward_gold: int = 0
+
 var active_quests: Dictionary = {}
 var completed_quest_ids: Array[String] = []
 
@@ -38,7 +42,6 @@ func register_enemy_defeated(enemy_name: String) -> void:
 				_complete_quest(quest_id)
 
 func place_player_at_spawn(scene_root: Node) -> void:
-	# Deprecated helper redirected to the unified initializer
 	initialize_player_position(scene_root)
 
 func initialize_player_position(scene_root: Node) -> void:
@@ -46,7 +49,6 @@ func initialize_player_position(scene_root: Node) -> void:
 	if player == null:
 		return
 
-	# 1. If we transitioned maps, use the target spawn point
 	if not pending_spawn_point.is_empty():
 		for marker in scene_root.get_tree().get_nodes_in_group("spawn_points"):
 			if marker.spawn_id == pending_spawn_point:
@@ -54,8 +56,6 @@ func initialize_player_position(scene_root: Node) -> void:
 				pending_spawn_point = ""
 				return
 		push_warning("No spawn point found matching: " + pending_spawn_point)
-
-	# 2. Otherwise, if we loaded a save file, restore the saved overworld coordinates
 	elif player_overworld_position != Vector2.ZERO:
 		player.global_position = player_overworld_position
 
@@ -96,7 +96,6 @@ func has_save(slot: String) -> bool:
 func save_game(slot: String) -> void:
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
 
-	# Update live overworld coordinates if we are currently in an overworld or town map
 	var player = get_tree().get_first_node_in_group("player")
 	if player != null:
 		player_overworld_position = player.global_position
@@ -306,6 +305,9 @@ func reset_game() -> void:
 	defeated_encounter_zones.clear()
 	inventory.clear()
 	party_stats.clear()
+	
+	pending_encounter_reward_items.clear()
+	pending_encounter_reward_gold = 0
 	_init_starting_state()
 
 func add_item(item: Item, quantity: int = 1) -> void:

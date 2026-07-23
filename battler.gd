@@ -1,3 +1,4 @@
+# battler.gd
 extends Node2D
 class_name Battler
 
@@ -13,6 +14,7 @@ signal mp_changed(new_mp: int, max_mp: int)
 signal died
 
 var active_statuses: Array = []
+var is_defending: bool = false
 
 func _ready() -> void:
 	if persist_across_scenes:
@@ -39,6 +41,11 @@ func _ready() -> void:
 func take_damage(amount: int) -> void:
 	var effective_defense: int = int(stats.defense * get_defense_modifier())
 	var actual_damage: int = max(amount - effective_defense, 1)
+	
+	# If defending, halve the final calculated damage (respecting the 1 damage minimum)
+	if is_defending:
+		actual_damage = max(actual_damage / 2, 1)
+		
 	stats.current_health = max(stats.current_health - actual_damage, 0)
 	health_changed.emit(stats.current_health, stats.max_health)
 	print(stats.character_name, " took ", actual_damage, " damage. HP: ", stats.current_health, "/", stats.max_health)

@@ -1,3 +1,4 @@
+# encounter_zone.gd
 extends Area2D
 
 @export var possible_enemies: Array[PackedScene] = []
@@ -7,6 +8,10 @@ extends Area2D
 @export var cooldown_time: float = 0.5
 @export var zone_id: String = ""
 @export var one_time_only: bool = false
+
+@export_group("Rewards")
+@export var reward_gold: int = 0
+@export var reward_items: Array[Item] = []
 
 var can_trigger: bool = true
 var has_been_used: bool = false
@@ -37,6 +42,10 @@ func start_encounter() -> void:
 	GameManager.overworld_scene_path = get_tree().current_scene.scene_file_path
 	GameManager.pending_encounter_zone_id = zone_id
 	GameManager.pending_encounter_is_boss = false
+
+	# Cache rewards for the battle scene
+	GameManager.pending_encounter_reward_gold = reward_gold
+	GameManager.pending_encounter_reward_items = reward_items
 
 	var enemy_count: int = randi_range(min_enemies, max_enemies)
 	var chosen_enemies: Array[PackedScene] = []

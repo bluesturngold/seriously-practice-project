@@ -1,8 +1,13 @@
+# boss_zone.gd
 extends Area2D
 
 @export var boss_scene: PackedScene
 @export var zone_id: String = ""
 @export var one_time_only: bool = true
+
+@export_group("Rewards")
+@export var reward_gold: int = 0
+@export var reward_items: Array[Item] = []
 
 var can_trigger: bool = true
 
@@ -35,5 +40,8 @@ func start_encounter() -> void:
 	GameManager.pending_encounter_enemies = [boss_scene]
 	GameManager.pending_encounter_is_boss = true
 
+	# Cache rewards for the battle scene
+	GameManager.pending_encounter_reward_gold = reward_gold
+	GameManager.pending_encounter_reward_items = reward_items
 
 	get_tree().change_scene_to_file.call_deferred("res://battle.tscn")

@@ -1,11 +1,14 @@
 [gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://co3trxhad74p5"]
 
 [ext_resource type="Script" uid="uid://coyu443478sd4" path="res://character_stats.gd" id="1_ph4rl"]
+[ext_resource type="Script" uid="uid://b328ihkiprowb" path="res://ability.gd" id="1_u4ky3"]
+[ext_resource type="Resource" uid="uid://bb2ytyfpu0a66" path="res://abilities/shatter_rain.tres" id="2_h007o"]
 
 [resource]
 script = ExtResource("1_ph4rl")
 character_name = "Slime"
 attack = 2
 defense = 1
+abilities = Array[ExtResource("1_u4ky3")]([ExtResource("2_h007o")])
 currency_reward = 10
 metadata/_custom_type_script = "uid://coyu443478sd4"
